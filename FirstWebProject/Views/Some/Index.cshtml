@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewData["Head"]</h2>
+
+<h3>@ViewBag.HeadSec</h3>
+
+<ul>
+    @foreach (string s in ViewBag.Fruit)
+    {
+        <li>@s</li>
+
+    }
+
+</ul>
