@@ -147,6 +147,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\macos-big-sur-2560x1440-23097.jpg" />
     <Content Include="favicon.ico" />
+    <Content Include="Files\FIXTB_876_PRClast.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
