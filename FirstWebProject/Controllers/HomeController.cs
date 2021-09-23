@@ -18,8 +18,23 @@ namespace FirstWebProject.Controllers
         public ActionResult Index() 
         {
             IEnumerable<Book> books = db.Books;
-            ViewBag.Books = books;
-            return View();
+            //ViewBag.Books = books;
+            ViewBag.Message = "This is Partial View";
+            return View(books);
+        }
+
+        public ActionResult BookIndex()
+        {
+            IEnumerable<Book> books = db.Books;
+            //ViewBag.Books = books;
+            return View(books);
+        }
+
+        public ActionResult GetList() 
+        {
+            string[] arr = new string[] { "Kyiv", "Slavuta", "NAU" };
+            ViewBag.Message = "This is Partial View";
+            return PartialView(arr);
         }
 
         public async Task<ActionResult> BookList()

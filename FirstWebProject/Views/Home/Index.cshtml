@@ -1,4 +1,10 @@
 ﻿@{
+    //Layout = "~/Views/Shared/_Layout2.cshtml";
+    //Layout = null;
+}
+@using FirstWebProject.Models
+@model IEnumerable<Book>
+@{
     ViewBag.Title = "Books store";
 }
 <div>
@@ -9,7 +15,8 @@
             <td><p>Author</p></td>
             <td><p>Price</p></td>
         </tr>
-        @foreach (var book in ViewBag.Books)
+        @* @foreach (var book in ViewBag.Books)*@
+        @foreach (Book book in Model)
         {
             <tr>
                 <td><p>@book.Name</p></td>
@@ -20,3 +27,14 @@
         }
     </table>
 </div>
+
+@Html.Action("GetList")
+
+@*@Html.Partial("GetList")*@
+
+@*@{ Html.RenderPartial("GetList");}*@
+
+@section Footer
+    {
+    <h4> Andrii Babenko. 2021.</h4>
+}

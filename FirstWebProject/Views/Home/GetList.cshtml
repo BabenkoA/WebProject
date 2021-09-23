@@ -1,0 +1,9 @@
+﻿@model IEnumerable<string>
+<h2>@ViewBag.Message</h2>
+
+<ul>
+    @foreach (string item in Model)
+    {
+        <li>@item</li>
+    }
+</ul>
