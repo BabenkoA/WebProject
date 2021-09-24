@@ -1,6 +1,6 @@
 ﻿@{
-    //Layout = "~/Views/Shared/_Layout2.cshtml";
-    //Layout = null;
+//Layout = "~/Views/Shared/_Layout2.cshtml";
+//Layout = null;
 }
 @using FirstWebProject.Models
 @model IEnumerable<Book>
@@ -30,6 +30,42 @@
 
 @Html.Action("GetList")
 
+@helper BookList(IEnumerable<Book> books) 
+{ 
+<ul>
+    @foreach (Book book in books)
+    {
+        <li>@book.Name</li>
+    }
+
+</ul>
+    }
+
+<h3>Список книг</h3>
+@BookList(Model)
+
+@helper CreateList(string[] all) 
+{
+<ul>
+    @foreach (string s in all)
+    {
+        <li>@s</li>
+    }
+</ul>
+    }
+
+@{
+    string[] cities = new string[] { "Kyiv", "Las-Vegas", "Slavuta", "Rivne" };
+    string[] countries = new string[] {"Ukraine", "USA","Great Britan", "France" };
+ }
+<h3>Cities</h3>
+@CreateList(cities)
+<h3>Countries</h3>
+@CreateList(countries)
+
+@using FirstWebProject.Helpers
+@Html.ShowList(cities)
+@Html.ShowList(countries)
 @*@Html.Partial("GetList")*@
 
 @*@{ Html.RenderPartial("GetList");}*@

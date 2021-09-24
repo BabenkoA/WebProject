@@ -7,21 +7,39 @@
 
 <div>
     <h3>Ordering</h3>
-    <form method="post">
-        <input type="hidden" name="BookId" value="@ViewBag.BookId" />
+    @using (Html.BeginForm("Buy", "Home", FormMethod.Post))
+    {
+       @Html.Hidden("BookId", ViewBag.BookId as string)
         <table>
             <tr>
-                <td><p>Enter your name:</p></td>
-                <td><input type="text" name="Person" /></td>
+                <td><p>@Html.Label("Person","Enter your name:")</p></td>
+                <td>@Html.TextBox("Person", "Enter your name")</td>
             </tr>
             <tr>
-                <td><p>Enter your address:</p></td>
-                <td><input type="text" name="Address" /></td>
+                <td><p>@Html.Label("Address","Enter your address:")</p></td>
+                <td>@Html.TextBox("Address", "Enter your address")</td>
             </tr>
             <tr>
+
                 <td><input type="submit" name="Sender" /></td>
             </tr>
         </table>
-    </form>
+    }
+    @*<form method="post">
+            <input type="hidden" name="BookId" value="@ViewBag.BookId" />
+            <table>
+                <tr>
+                    <td><p>Enter your name:</p></td>
+                    <td><input type="text" name="Person" /></td>
+                </tr>
+                <tr>
+                    <td><p>Enter your address:</p></td>
+                    <td><input type="text" name="Address" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="Sender" /></td>
+                </tr>
+            </table>
+        </form>*@
 </div>
 
