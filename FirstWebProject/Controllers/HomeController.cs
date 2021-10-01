@@ -20,6 +20,8 @@ namespace FirstWebProject.Controllers
             IEnumerable<Book> books = db.Books;
             //ViewBag.Books = books;
             ViewBag.Message = "This is Partial View";
+            SelectList authors = new SelectList(books, "Author", "Name");
+            ViewBag.Authors = authors;
             return View(books);
         }
 
@@ -28,6 +30,17 @@ namespace FirstWebProject.Controllers
             IEnumerable<Book> books = db.Books;
             //ViewBag.Books = books;
             return View(books);
+        }
+
+        [HttpPost]
+        public string GetForm(string color, string text, string authors, string[] countries) 
+        {
+            string all_countries = "";
+            foreach (string country in countries)
+            {
+                all_countries += country + "; ";
+            }
+            return color +"\n" +text + "\n" + authors + "\n" + all_countries;
         }
 
         public ActionResult GetList() 

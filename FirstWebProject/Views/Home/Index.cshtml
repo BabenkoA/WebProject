@@ -1,6 +1,6 @@
 ﻿@{
-//Layout = "~/Views/Shared/_Layout2.cshtml";
-//Layout = null;
+    //Layout = "~/Views/Shared/_Layout2.cshtml";
+    //Layout = null;
 }
 @using FirstWebProject.Models
 @model IEnumerable<Book>
@@ -30,34 +30,34 @@
 
 @Html.Action("GetList")
 
-@helper BookList(IEnumerable<Book> books) 
-{ 
-<ul>
-    @foreach (Book book in books)
-    {
-        <li>@book.Name</li>
-    }
+@helper BookList(IEnumerable<Book> books)
+{
+    <ul>
+        @foreach (Book book in books)
+        {
+            <li>@book.Name</li>
+        }
 
-</ul>
-    }
+    </ul>
+}
 
 <h3>Список книг</h3>
 @BookList(Model)
 
-@helper CreateList(string[] all) 
+@helper CreateList(string[] all)
 {
-<ul>
-    @foreach (string s in all)
-    {
-        <li>@s</li>
-    }
-</ul>
-    }
+    <ul>
+        @foreach (string s in all)
+        {
+            <li>@s</li>
+        }
+    </ul>
+}
 
 @{
     string[] cities = new string[] { "Kyiv", "Las-Vegas", "Slavuta", "Rivne" };
-    string[] countries = new string[] {"Ukraine", "USA","Great Britan", "France" };
- }
+    string[] countries = new string[] { "Ukraine", "USA", "Great Britan", "France" };
+}
 <h3>Cities</h3>
 @CreateList(cities)
 <h3>Countries</h3>
@@ -70,6 +70,23 @@
 
 @*@{ Html.RenderPartial("GetList");}*@
 
+@using (Html.BeginForm("GetForm", "Home", FormMethod.Post))
+{
+    @Html.ListBox("countries", new MultiSelectList(new string[] { "Ukraine", "France", "Greate Britan", "USA" }))
+    <br />
+    @Html.DropDownList("authors", ViewBag.Authors as SelectList)
+    <br />
+    @Html.RadioButton("color", "red")
+    <span>Red</span>
+    <br />
+    @Html.RadioButton("color", "blue", true)
+    <span>Blue</span>
+    <br />
+    @Html.TextArea("text", "hello", 5, 50, null)
+    <input type="submit" value="Send" />
+    <br />
+    <label>@Html.CheckBox("set", false) Turn in</label>
+}
 @section Footer
     {
     <h4> Andrii Babenko. 2021.</h4>
