@@ -1,4 +1,4 @@
-﻿
+﻿@model FirstWebProject.Models.Purchase
 @{
     ViewBag.Title = "Buy the book";
 }
@@ -9,15 +9,21 @@
     <h3>Ordering</h3>
     @using (Html.BeginForm("Buy", "Home", FormMethod.Post))
     {
-       @Html.Hidden("BookId", ViewBag.BookId as string)
+        //@Html.Hidden("BookId", Model.BookId)
+        @Html.HiddenFor(m => m.BookId)
         <table>
             <tr>
-                <td><p>@Html.Label("Person","Enter your name:")</p></td>
-                <td>@Html.TextBox("Person", "Enter your name")</td>
+                @*<td><p>@Html.Label("Person", "Enter your name:")</p></td>*@
+                @*<td>@Html.TextBox("Person", "Enter your name")</td>*@
+                <td><p>@Html.LabelFor(m => m.Person, "Enter your name: ")</p></td>
+                <td>@Html.TextBoxFor(m => m.Person)</td>
             </tr>
             <tr>
-                <td><p>@Html.Label("Address","Enter your address:")</p></td>
-                <td>@Html.TextBox("Address", "Enter your address")</td>
+                @*<td><p>@Html.Label("Address", "Enter your address:")</p></td>*@
+                @*<td>@Html.TextBox("Address", "Enter your address")</td>*@
+                <td><p>@Html.LabelFor(m => m.Address, "Enter your address: ")</p></td>
+                @*<td>@Html.TextBoxFor(m => m.Address)</td>*@
+                <td>@Html.EditorFor(m => m.Address)</td>
             </tr>
             <tr>
 

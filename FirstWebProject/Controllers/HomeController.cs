@@ -95,7 +95,8 @@ namespace FirstWebProject.Controllers
         public ActionResult Buy(int id)
         {
             ViewBag.BookId = id;
-            return View();
+            Purchase purchase = new Purchase { BookId = id };
+            return View(purchase);
         }
 
         [HttpPost]
@@ -172,8 +173,20 @@ namespace FirstWebProject.Controllers
             HttpContext.Response.Write("<p>Browser: " + browser + "</p><p>User-Agent: " + user_agent + "</p><p>Url запроса: " + url +
             "</p><p>Реферер: " + referrer + "</p><p>IP-адрес: " + ip + "</p>");
             return "Done";
+        }
 
+        public ActionResult GetBook(int id) 
+        {
+            Book b = db.Books.Find(id);
+            if (b == null)
+                return HttpNotFound();
+            return View(b);
+        }
 
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
