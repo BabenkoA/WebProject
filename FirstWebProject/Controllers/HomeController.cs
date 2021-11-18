@@ -18,11 +18,36 @@ namespace FirstWebProject.Controllers
         public ActionResult Index() 
         {
             IEnumerable<Book> books = db.Books;
-            //ViewBag.Books = books;
+            ViewBag.Books = books;
             ViewBag.Message = "This is Partial View";
             SelectList authors = new SelectList(books, "Author", "Name");
             ViewBag.Authors = authors;
             return View(books);
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+         [HttpPost]
+        public ActionResult Create(Book book)
+        {
+            db.Books.Add(book);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id) 
+        {
+            Book b = db.Books.Find(id);
+            if (b != null)
+            {
+                db.Books.Remove(b);
+                db.SaveChanges();
+
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult BookIndex()

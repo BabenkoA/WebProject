@@ -1,12 +1,9 @@
-﻿@{
-    //Layout = "~/Views/Shared/_Layout2.cshtml";
-    //Layout = null;
-}
-@using FirstWebProject.Models
+﻿@using FirstWebProject.Models
 @model IEnumerable<Book>
 @{
     ViewBag.Title = "Books store";
 }
+<p><a href="/Home/Create">Create a book</a></p>
 <div>
     <h3>Books shop</h3>
     <table>
@@ -16,7 +13,7 @@
             <td><p>Price</p></td>
         </tr>
         @* @foreach (var book in ViewBag.Books)*@
-        @foreach (Book book in Model)
+        @foreach (Book book in ViewBag.Books)
         {
             <tr>
                 <td><p>@book.Name</p></td>
